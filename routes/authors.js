@@ -59,8 +59,11 @@ router.get('/:id/edit', async (req, res) => {
     try {
         const author = await Author.findById(req.params.id)
         res.render('authors/edit', { author: author })
-    } catch {
-        res.redirect('/authors')
+    } catch (error) {
+        res.render('authors/edit', {
+            author: author,
+            errorMsg: error.message
+        })
     }
 })
 
@@ -75,7 +78,7 @@ router.patch('/:id', async (req, res) => {
         if (author == null) {
             res.redirect('/')
         } else {
-            res.render('/authors/edit', {
+            res.render('authors/edit', {
                 author: author,
                 errorMsg: 'Error updating the author'
             })
