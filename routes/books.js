@@ -103,6 +103,25 @@ router.patch('/:id', async (req, res) => {
     }
 })
 
+//Delete Book Route
+router.delete('/:id', async (req, res) => {
+    let book 
+    try {
+        book = await Book.findById(req.params.id)
+        await book.remove()
+        res.redirect('/books')
+    } catch {
+        if (book != null) {
+        res.render('books/show', {
+            book: book,
+            errorMsg: 'Could not remove the book'
+        })
+    } else {
+        res.redirect('/')
+        }
+    }
+})
+
 
 async function renderNewPage(res, book, hasError = false){
     renderFormPage(res, book, 'new', hasError)
