@@ -10,7 +10,7 @@
 }
 
 .book-cover--large{
-    width: var(--book-cover-width-large);
+    --book-cover-width: var(--book-cover-width-large);
 }
 
 .book-grid{
