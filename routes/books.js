@@ -33,6 +33,11 @@ router.get('/', async (req, res) => {
     }
 })
 
+// New Book Route
+router.get('/new', async (req, res) => {
+    renderNewPage(res, new Book())
+  })
+
 
 //Create Book Route
 router.post('/', async (req, res) => {
@@ -68,7 +73,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
     try {
         const book = await Book.findById(req.params.id)
-        renderEditPage(res, new Book())
+        renderEditPage(res, book)
     } catch {
         res.redirect('/')
     }
@@ -77,10 +82,8 @@ router.get('/:id/edit', async (req, res) => {
 //Update Book Route
 router.patch('/:id', async (req, res) => {
     let book
-
     try {
         book = await Book.findById(req.params.id)
-        console.log(book)
         book.title = req.body.title
         book.author = req.body.author
         book.publishDate = new Date(req.body.publishDate)
@@ -91,8 +94,7 @@ router.patch('/:id', async (req, res) => {
         }
         await book.save()
         res.redirect(`/books/${book.id}`)
-    } catch (error){
-        console.log(error)
+    } catch {
         if (book != null) {
             renderEditPage(res, book, true)
         } else {
