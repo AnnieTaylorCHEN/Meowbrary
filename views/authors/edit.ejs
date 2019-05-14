@@ -2,6 +2,8 @@
 <h2 class="page-header">Edit Author</h2>
 <form action="/authors/<%= author.id %>?_method=PATCH" method="POST">
   <%- include('_form_fields') %>
-  <a href="/authors/<%= author.id %>">Cancel</a>
-  <button type="submit">Update</button>
+  <div class ="form __row form__row--end btn__row">
+    <a class="btn btn__danger" href="/authors/<%= author.id %>">Cancel</a>
+    <button class="btn btn__primary" type="submit">Update</button>
+  </div>
 </form>

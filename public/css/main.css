@@ -2,6 +2,9 @@
 @import 'shared/variables.css';
 @import 'shared/header.css';
 @import 'shared/buttons.css';
+@import 'shared/form.css';
+@import 'shared/author.css';
+@import 'shared/books.css';
 
 :root {
     font-family: 'Poiret One', Arial, Helvetica, sans-serif;
@@ -30,4 +33,8 @@ body{
 .page-header{
     font-size: 2rem;
     font-weight: 500;
+}
+
+.error-message {
+    color: hsla(var(--color-danger-hue), 100%, 50%);
 }

@@ -1,7 +1,10 @@
 
 <h2 class="page-header">New Author</h2>
+
 <form action="/authors" method="POST">
   <%- include('_form_fields') %>
-  <a href="/authors">Cancel</a>
-  <button type="submit">Create</button>
+  <div class ="form __row form__row--end btn__row">
+    <a class="btn btn__danger"  href="/authors">Cancel</a>
+    <button class="btn btn__primary" type="submit">Create</button>
+  </div>
 </form>

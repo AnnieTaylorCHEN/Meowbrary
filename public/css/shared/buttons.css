@@ -14,7 +14,9 @@
     border: 1px solid var(--color-btn-border);
     border-radius: .5rem;
     padding: .5rem 1rem;
+    font-family: "Poiret One", Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
