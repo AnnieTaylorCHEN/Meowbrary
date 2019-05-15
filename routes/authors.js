@@ -59,11 +59,8 @@ router.get('/:id/edit', async (req, res) => {
     try {
         const author = await Author.findById(req.params.id)
         res.render('authors/edit', { author: author })
-    } catch (error) {
-        res.render('authors/edit', {
-            author: author,
-            errorMsg: error.message
-        })
+    } catch {
+        res.redirect('/authors')
     }
 })
 
@@ -92,9 +89,12 @@ router.delete('/:id', async (req, res) => {
         author = await Author.findById(req.params.id)
         await author.remove()
         res.redirect('/authors')
-    } catch {
-        if (author == null) {
-            res.redirect('/')
+    } catch (error) {
+        if (author !== null) {
+            res.render('authors/edit', {
+                author: author,
+                errorMsg: error.message
+            })
         } else {
             res.redirect(`/authors/${author.id}`)
         }
